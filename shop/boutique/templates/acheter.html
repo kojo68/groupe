@@ -1,0 +1,9 @@
+
+<h2>Acheter un maillot</h2>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Acheter</button>
+</form>
+{% if message %}
+<p>{{ message }}</p>
+{% endif %}

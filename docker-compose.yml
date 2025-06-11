@@ -1,0 +1,36 @@
+
+version: '3.8'
+
+services:
+  web:
+    build: .
+    volumes:
+      - ./shop:/code
+    ports:
+      - "8001:8000"
+    depends_on:
+      - db
+      - rabbitmq
+    environment:
+      - DJANGO_DB_HOST=db
+      - DJANGO_DB_NAME=boutique
+      - DJANGO_DB_USER=user
+      - DJANGO_DB_PASSWORD=password
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: boutique
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+volumes:
+  postgres_data:
