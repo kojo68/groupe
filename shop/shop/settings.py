@@ -57,6 +57,16 @@ DATABASES = {
     }
 }
 
+# Utilise SQLite en mode test pour simplifier l'exécution des tests unitaires
+import sys
+if 'test' in sys.argv:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': ':memory:',
+        }
+    }
+
 LANGUAGE_CODE = 'fr-fr'
 TIME_ZONE = 'UTC'
 USE_I18N = True
