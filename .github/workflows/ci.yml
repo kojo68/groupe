@@ -42,10 +42,10 @@ jobs:
       - name: Run migrations
         env:
           DJANGO_DB_HOST: localhost
-        run: python manage.py migrate
+        run: python shop/manage.py migrate
 
       - name: Run tests
-        run: python manage.py test
+        run: python shop/manage.py test
 
   sonar:
     needs: test
