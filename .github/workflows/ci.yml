@@ -77,7 +77,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
-            cd /h/home/dev/groupe1/groupeome/debian/app/
+            cd /home/dev/groupe1
             git pull origin main
             docker-compose down
             docker-compose up -d --build
